@@ -1,0 +1,20 @@
+{
+  "name": "cabinet-veterinaire",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "npm run build --workspace client",
+    "test": "npm run test --workspace server",
+    "db:migrate": "npm run db:migrate --workspace server",
+    "bootstrap:admin": "npm run bootstrap:admin --workspace server",
+    "bootstrap:veterinarian": "npm run bootstrap:veterinarian --workspace server",
+    "bootstrap:veterinaire": "npm run bootstrap:veterinarian --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

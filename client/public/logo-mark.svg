@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title">
+  <title id="title">Emblème Cabinet Vétérinaire</title>
+  <defs>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2d9c78" />
+      <stop offset="1" stop-color="#58b56e" />
+    </linearGradient>
+    <linearGradient id="animals" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#174b67" />
+      <stop offset="1" stop-color="#246b7b" />
+    </linearGradient>
+    <linearGradient id="cat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4db0a0" />
+      <stop offset="1" stop-color="#2c8b79" />
+    </linearGradient>
+    <clipPath id="circle">
+      <circle cx="200" cy="205" r="170" />
+    </clipPath>
+  </defs>
+  <circle cx="200" cy="205" r="170" fill="none" stroke="url(#ring)" stroke-width="14" stroke-dasharray="915 154" stroke-linecap="round" transform="rotate(-48 200 205)" />
+  <g clip-path="url(#circle)">
+    <path fill="url(#animals)" d="M67 271c-16-27-16-53-3-78l25-45c17-32 47-62 82-74 27-9 52-7 72 5l31 18 52 2 37 12-3 37c-2 20-16 35-37 43l-29 11c-11 5-19 14-24 28l-19 57c-7 21-20 36-42 43l-65 20-42 25-53-15 12-44c5-19 2-32-12-45l-12 1c-4 0-8 0-12-1z" />
+    <path fill="#123f5b" d="M110 123c-19 15-31 37-36 61-4 17 3 31 19 40l37 22c14 8 26 7 33-6 9-17 8-36 2-57l-15-57c-11-7-25-8-40-3z" />
+    <path fill="url(#animals)" d="M239 293c21-27 45-42 70-47l40-8c17-4 33 2 45 15l28 30 28 12 8 24-22 10-22 22-37-2-27-11-38 9-46 29-55-1 8-37z" />
+    <path fill="url(#cat)" d="M137 313c-8-18-6-35 5-52l20-33-1-41 31 21 28-28c10-11 22-14 34-5l31 24 26 17-7 29c-3 13-11 23-25 30l-16 8 4 27c4 28-4 51-26 70l-23 20-46 7-38-14-17-26 14-23c8-13 10-24 6-35z" />
+    <path fill="url(#ring)" d="M93 338c20 31 49 50 86 58 36 8 72 2 104-17-33 34-72 51-118 45-43-5-76-29-95-68-7-15-6-31 3-48 2 13 8 23 20 30z" />
+    <path d="M245 236c14-11 28-15 43-12m-43 22c17-9 33-12 48-8m-48 18c13-5 25-6 37-3" fill="none" stroke="#f6fbf7" stroke-linecap="round" stroke-width="3.4" />
+    <path d="M205 115c5-12 15-17 28-13" fill="none" stroke="#f6fbf7" stroke-linecap="round" stroke-width="4" />
+    <path d="M319 152v-31h28v31h31v28h-31v31h-28v-31h-31v-28z" fill="url(#ring)" />
+  </g>
+</svg>

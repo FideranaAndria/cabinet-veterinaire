@@ -1,0 +1,64 @@
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import swaggerUi from 'swagger-ui-express';
+import { env } from './config/env.js';
+import { openApiDocument } from './docs/openapi.js';
+import { errorHandler, notFoundHandler } from './middleware/error-handler.js';
+import { healthRouter } from './routes/health.js';
+import { authRouter } from './modules/auth/auth.routes.js';
+import { clientsRouter } from './modules/clients/clients.routes.js';
+import { animalsRouter } from './modules/animals/animals.routes.js';
+import { appointmentsRouter } from './modules/appointments/appointments.routes.js';
+import { consultationsRouter } from './modules/consultations/consultations.routes.js';
+import { medicalRecordsRouter } from './modules/medical-records/medical-records.routes.js';
+import { hospitalizationsRouter } from './modules/hospitalizations/hospitalizations.routes.js';
+import { productsRouter } from './modules/products/products.routes.js';
+import { invoicesRouter } from './modules/invoices/invoices.routes.js';
+import { auditRouter } from './modules/audit/audit.routes.js';
+import { notificationsRouter } from './modules/notifications/notifications.routes.js';
+import { dashboardRouter } from './modules/dashboard/dashboard.routes.js';
+import { laboratoryRouter } from './modules/laboratory/laboratory.routes.js';
+import { documentsRouter } from './modules/documents/documents.routes.js';
+import { supplyChainRouter } from './modules/supply-chain/supply-chain.routes.js';
+import { staffRouter } from './modules/staff/staff.routes.js';
+import { paymentRequestsRouter } from './modules/payment-requests/payment-requests.routes.js';
+import { messagesRouter } from './modules/messages/messages.routes.js';
+import { insuranceRouter } from './modules/insurance/insurance.routes.js';
+import { auditMutations } from './middleware/audit-mutations.js';
+
+export const app = express();
+
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(cors({
+  origin: env.CORS_ORIGIN.split(',').map((origin) => origin.trim()),
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+}));
+app.use(express.json({ limit: '1mb' }));
+app.use('/api', rateLimit({ windowMs: 60_000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false }));
+app.use('/api/v1', auditMutations);
+app.use('/api/v1', healthRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/clients', clientsRouter);
+app.use('/api/v1/animals', animalsRouter);
+app.use('/api/v1/appointments', appointmentsRouter);
+app.use('/api/v1/consultations', consultationsRouter);
+app.use('/api/v1/medical-records', medicalRecordsRouter);
+app.use('/api/v1/hospitalizations', hospitalizationsRouter);
+app.use('/api/v1/products', productsRouter);
+app.use('/api/v1/invoices', invoicesRouter);
+app.use('/api/v1/audit-logs', auditRouter);
+app.use('/api/v1/notifications', notificationsRouter);
+app.use('/api/v1/dashboard', dashboardRouter);
+app.use('/api/v1/laboratory-requests', laboratoryRouter);
+app.use('/api/v1/documents', documentsRouter);
+app.use('/api/v1', supplyChainRouter);
+app.use('/api/v1/staff', staffRouter);
+app.use('/api/v1/payment-requests', paymentRequestsRouter);
+app.use('/api/v1/messages', messagesRouter);
+app.use('/api/v1/insurance', insuranceRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
+app.use(notFoundHandler);
+app.use(errorHandler);
